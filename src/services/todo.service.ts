@@ -1,4 +1,4 @@
-import { ITodo } from "../models/Todo.model";
+import { ITodo } from "../models/todo.model";
 const { todoDb } = require("../db");
 
 const createTodo = async (todo: ITodo) => {

@@ -4,8 +4,8 @@ const { todoService } = require("../services");
 
 const createTodo = async (req: Request, res: Response) => {
   try {
-    const { title } = req.body; //TODO: bodymen validation
-    const todo = await todoService.createTodo(title);
+    //TODO bodymen validation
+    const todo = await todoService.createTodo(req.body);
     res.status(200).json(todo);
   } catch (error: any) {
     console.log(error);
