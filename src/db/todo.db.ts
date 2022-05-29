@@ -4,53 +4,44 @@ const createTodoDb = async (todo: ITodo) => {
   try {
     const newTodo = new Todo(todo);
     await newTodo.save();
-    console.log(newTodo);
     return newTodo;
   } catch (error) {
     console.log(error);
   }
 };
 
-const getTodosDb = () => {
-  // ...
+const getTodosDb = async () => {
   try {
-    return 1;
+    return await Todo.find();
   } catch (error) {
     console.log(error);
   }
 };
 
-const getTodoById = (id: number) => {
-  // ...
+const getTodoById = async (id: string) => {
   try {
-    return 1;
+    return await Todo.findById(id);
   } catch (error) {
     console.log(error);
   }
 };
 
-const updateTodo = (id: number) => {
-  // ...
+const updateTodoDb = async (id: string, todo: ITodo) => {
+  //itodo tipinde vermeyince hata vermesi gerekmiyor mu?
   try {
-    return 1;
+    const updatedTodo = await Todo.findOneAndUpdate({ _id: id }, todo);
+    return updatedTodo;
   } catch (error) {
     console.log(error);
   }
 };
 
-const deleteTodo = (id: number) => {
-  // ...
+const deleteTodoDb = (id: string) => {
   try {
-    return 1;
+    return Todo.findByIdAndDelete(id);
   } catch (error) {
     console.log(error);
   }
 };
 
-module.exports = {
-  createTodoDb,
-  getTodosDb,
-  getTodoById,
-  updateTodo,
-  deleteTodo,
-};
+export { createTodoDb, getTodosDb, getTodoById, updateTodoDb, deleteTodoDb };

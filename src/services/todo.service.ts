@@ -1,5 +1,5 @@
 import { ITodo } from "../models/todo.model";
-const { todoDb } = require("../db");
+import { todoDb } from "../db/index";
 
 const createTodo = async (todo: ITodo) => {
   try {
@@ -17,7 +17,7 @@ const getTodos = async () => {
   }
 };
 
-const getTodoById = async (id: number) => {
+const getTodoById = async (id: string) => {
   try {
     return await todoDb.getTodoById(id);
   } catch (error) {
@@ -25,20 +25,19 @@ const getTodoById = async (id: number) => {
   }
 };
 
-const updateTodo = async (id: number, todo: ITodo, content: String) => {
+const updateTodo = async (id: string, todo: ITodo) => {
   try {
-    return await todoDb.updateTodo(id, todo, content);
+    return await todoDb.updateTodoDb(id, todo);
   } catch (error) {
     console.log(error);
   }
 };
 
-const deleteTodo = async (id: number) => {
+const deleteTodo = async (id: string) => {
   try {
-    return await todoDb.deleteTodo(id);
+    return await todoDb.deleteTodoDb(id); //isme göre de hata vermiyor bu şekilde
   } catch (error) {
     console.log(error);
   }
 };
-
-module.exports = { createTodo, getTodos, deleteTodo, getTodoById, updateTodo };
+export { createTodo, getTodos, deleteTodo, getTodoById, updateTodo };

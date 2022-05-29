@@ -1,5 +1,1 @@
-const todoDb = require("./todo.db");
-
-module.exports = {
-  todoDb,
-};
+export * as todoDb from "./todo.db";

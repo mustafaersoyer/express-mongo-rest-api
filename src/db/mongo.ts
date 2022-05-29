@@ -30,7 +30,4 @@ async function disconnectMongo() {
   }
 }
 
-module.exports = {
-  connectMongo,
-  disconnectMongo,
-};
+export { connectMongo, disconnectMongo };

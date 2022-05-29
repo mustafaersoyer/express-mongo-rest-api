@@ -13,7 +13,4 @@ const isStrongPassword = (password: string): boolean => {
   return regex.test(password);
 };
 
-module.exports = {
-  isEmail,
-  isStrongPassword,
-};
+export { isEmail, isStrongPassword };

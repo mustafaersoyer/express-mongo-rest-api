@@ -1,6 +1,6 @@
 import express = require("express");
 
-const { todo } = require("../controllers");
+import { todo } from "../controllers";
 
 const router = express.Router();
 
@@ -10,4 +10,4 @@ router.get("/todo/:id", todo.getTodoById);
 router.put("/todo/:id", todo.updateTodo);
 router.delete("/todo/:id", todo.deleteTodo);
 
-module.exports = router;
+export { router };

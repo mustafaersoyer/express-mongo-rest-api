@@ -1,5 +1,1 @@
-const todo = require("./todo.controller");
-
-module.exports = {
-  todo,
-};
+export * as todo from "./todo.controller";
