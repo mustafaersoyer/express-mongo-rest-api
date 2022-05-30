@@ -1,0 +1,121 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Todo Rest API",
+    "description": "A simple Todo REST API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Todos",
+      "description": "API for managing Todos"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/api/todo": {
+      "get": {
+        "tags": ["Todos"],
+        "summary": "Get all todos in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Todos"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Todos"],
+        "summary": "Create new todo.",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "body",
+            "description": "Todo title",
+            "schema": {
+              "$ref": "#/definitions/Todos"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+
+            "schema": {
+              "$ref": "#/definitions/Todos"
+            }
+          }
+        }
+      }
+    },
+    "/api/todo/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of user that we want to find",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Update todo with give ID",
+        "tags": ["Todos"],
+        "parameters": [
+          {
+            "name": "title",
+            "in": "body",
+            "description": "Title with new value",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Title is updated",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete todo with given ID",
+        "tags": ["Todos"],
+        "responses": {
+          "200": {
+            "description": "Todo is deleted",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Todo": {
+      "required": ["title", "_id"],
+      "properties": {
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "Todos": {
+      "type": "array",
+      "$ref": "#/definitions/Todos"
+    }
+  }
+}
