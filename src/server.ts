@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+
 const { connectMongo, disconnectMongo } = require("./db/mongo");
 const swaggerUi = require("swagger-ui-express"),
   swaggerDocument = require("../swagger.json");

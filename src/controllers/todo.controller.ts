@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { nextTick } from "process";
 
 import { todoService } from "../services";
 
@@ -7,6 +6,7 @@ const createTodo = async (req: Request, res: Response) => {
   try {
     //TODO bodymen validation
     const todo = await todoService.createTodo(req.body);
+
     res.status(200).json(todo);
   } catch (error: any) {
     console.log(error);
